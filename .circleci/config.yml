@@ -8,7 +8,7 @@ jobs:
           name: rajeshci
           environment:
             GOOGLE_INSTANCE_NAME: onnbazaar-instance
-          command: echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json && cat ${HOME}/gcloud-service-key.json
+          command: echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json && echo ${GOOGLE_INSTANCE_NAME} 
       - run: |
           gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
           gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
