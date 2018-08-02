@@ -13,7 +13,7 @@ jobs:
           gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
           gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
           gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
-          gcloud --quiet compute instances set-service-account ${GOOGLE_INSTANCE_NAME}
+          gcloud config set project ${GOOGLE_INSTANCE_NAME}
       - run:
           name: ssh
           environment:
