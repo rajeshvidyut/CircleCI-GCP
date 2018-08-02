@@ -6,11 +6,14 @@ jobs:
     steps:
       - run:
           name: rajeshci
+          environment:
+            GOOGLE_INSTANCE_NAME: onnbazaar-instance
           command: echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json && cat ${HOME}/gcloud-service-key.json
       - run: |
           gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
           gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
           gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+          gcloud --quiet config set compute/instances ${GOOGLE_INSTANCE_NAME}
       - run:
           name: ssh
           environment:
