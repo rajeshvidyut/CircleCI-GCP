@@ -17,6 +17,6 @@ jobs:
             SSH_KEY: circleci.rsa
           command: |
             ssh-keygen -f ${SSH_KEY} -t rsa -N ''
-            cat circleci
+            # cat circleci
             ls
             
