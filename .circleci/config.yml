@@ -11,10 +11,10 @@ jobs:
             GOOGLE_SERVICE_NAME: 573964864377-compute@developer.gserviceaccount.com
           command: echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json && echo ${GOOGLE_COMPUTE_ZONE} 
       - run: |
-          # gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
-          gcloud auth activate-service-account ${GOOGLE_SERVICE_NAME} --key-file ${HOME}/gcloud-service-key.json
-          # gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
-          gcloud config set project ${GOOGLE_INSTANCE_NAME}
+          gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+          # gcloud auth activate-service-account ${GOOGLE_SERVICE_NAME} --key-file ${HOME}/gcloud-service-key.json
+          gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+          # gcloud config set project ${GOOGLE_INSTANCE_NAME}
           gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
       - run:
           name: ssh
