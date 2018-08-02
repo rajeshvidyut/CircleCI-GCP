@@ -7,14 +7,15 @@ jobs:
       - run:
           name: rajeshci
           environment:
-            #GOOGLE_INSTANCE_NAME: onnbazaar
-          command: echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json && echo ${GOOGLE_INSTANCE_NAME} 
+            GOOGLE_INSTANCE_NAME: onnbazaar
+            GOOGLE_SERVICE_NAME: 573964864377-compute@developer.gserviceaccount.com
+            command: echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json && echo ${GOOGLE_INSTANCE_NAME} 
       - run: |
-          gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
-          gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
-          #gcloud config set project ${GOOGLE_INSTANCE_NAME}
+          # gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+          gcloud auth activate-service-account ${GOOGLE_SERVICE_NAME} --key-file ${HOME}/gcloud-service-key.json
+          # gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+          gcloud config set project ${GOOGLE_INSTANCE_NAME}
           gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
-          gcloud compute --project "onnbazaar-200807" ssh --zone "us-east1-b" "onnbazaar-instance"
       - run:
           name: ssh
           environment:
