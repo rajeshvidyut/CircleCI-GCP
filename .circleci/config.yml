@@ -14,6 +14,7 @@ jobs:
           gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
           #gcloud config set project ${GOOGLE_INSTANCE_NAME}
           gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+          gcloud compute --project "onnbazaar-200807" ssh --zone "us-east1-b" "onnbazaar-instance"
       - run:
           name: ssh
           environment:
