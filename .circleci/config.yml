@@ -1,8 +1,18 @@
 version: 2
 jobs:
-  build:
-    docker: # See https://docs.docker.com/get-started/#docker-concepts if you are new to Docker.
-      - image: circleci/ruby:2.4.1-jessie
+  deploy:
+    docker:
+      - image: google/cloud-sdk
     steps:
-      - checkout
-      - run: echo "A first hello"
+      - run:
+          name: rajeshci
+          command: echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
+      - run: |
+          # sudo gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+          # sudo gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+          # sudo gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+          # sudo gcloud --quiet container clusters get-credentials ${GOOGLE_CLUSTER_NAME}
+          sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
+          sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+          sudo /opt/google-cloud-sdk/bin/gcloud config set project ${GOOGLE_PROJECT_ID}
+          sudo /opt/google-cloud-sdk/bin/gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
