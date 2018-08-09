@@ -16,7 +16,7 @@ jobs:
           gcloud auth activate-service-account ${GOOGLE_SERVICE_NAME} --key-file=${HOME}/gcloud-service-key.json
           gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
           # gcloud config set project ${GOOGLE_INSTANCE_NAME}
-          gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+          gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE} | echo ${GOOGLE_COMPUTE_ZONE}
       - run:
           name: ssh
           environment:
@@ -27,8 +27,7 @@ jobs:
             ssh-keygen -f ${SSH_KEY} -t rsa -N ''
             export GCP_FOLDER_PATH=${GCP_FOLDER}            
             export SSH_RUN="gcloud compute ssh root@${GCP_PROJECT_INSTANCE} --ssh-key-file=${SSH_KEY}"
-            ${SSH_RUN} --command="cd ${GCP_FOLDER_PATH} && apt-get update"
-            echo "Hello"
+            echo echo ${GOOGLE_COMPUTE_ZONE}
 
 
             
