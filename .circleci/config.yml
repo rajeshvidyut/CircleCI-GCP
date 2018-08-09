@@ -7,7 +7,7 @@ jobs:
       - run:
           name: rajeshci
           environment:
-            GOOGLE_INSTANCE_NAME: onnbazaar
+            GOOGLE_INSTANCE_NAME: onnbazaar-instance
             GOOGLE_SERVICE_NAME: 573964864377-compute@developer.gserviceaccount.com
             #GOOGLE_SERVICE_NAME: #rajeshci@onnbazaar-200807.iam.gserviceaccount.com
           command: echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json && echo ${GOOGLE_COMPUTE_ZONE} 
@@ -27,6 +27,7 @@ jobs:
             ssh-keygen -f ${SSH_KEY} -t rsa -N ''
             export GCP_FOLDER_PATH=${GCP_FOLDER}            
             export SSH_RUN="gcloud compute ssh root@${GCP_PROJECT_INSTANCE} --ssh-key-file=${SSH_KEY}"
+            ${SSH_RUN} --command="cd ${GCP_FOLDER_PATH} && apt-get update"
             echo "Hello"
 
 
