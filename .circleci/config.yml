@@ -25,6 +25,8 @@ jobs:
             GCP_PROJECT_INSTANCE: onnbazaar-instance
           command: |
             ssh-keygen -f ${SSH_KEY} -t rsa -N ''
+            export GCP_FOLDER_PATH=${GCP_FOLDER}
             echo "Hello"
+            
 
             
