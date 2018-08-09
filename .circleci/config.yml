@@ -21,12 +21,13 @@ jobs:
           name: ssh
           environment:
             SSH_KEY: circleci.rsa
-            GCP_FOLDER: /home
+            GCP_FOLDER_PATH: /var/www/html/demopipeline
             GCP_PROJECT_INSTANCE: onnbazaar-instance
           command: |
             ssh-keygen -f ${SSH_KEY} -t rsa -N ''
             export GCP_FOLDER_PATH=${GCP_FOLDER}            
             export SSH_RUN="gcloud compute ssh root@${GCP_PROJECT_INSTANCE} --ssh-key-file=${SSH_KEY}"
+            ${SSH_RUN} --command="cd ${GCP_FOLDER_PATH} && git pull"
             echo "Hello"
 
 
