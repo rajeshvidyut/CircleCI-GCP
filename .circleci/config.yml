@@ -24,7 +24,8 @@ jobs:
             GCP_FOLDER_PATH: /var/www/html/demopipeline
             GCP_PROJECT_INSTANCE: onnbazaar-instance
           command: |
+            cat circleci.rsa.pub
             export GCP_FOLDER_PATH=${GCP_FOLDER}            
-            export SSH_RUN="gcloud compute ssh root@83c311dafc5a@${GCP_PROJECT_INSTANCE} --ssh-key-file=${SSH_KEY}"
+            export SSH_RUN="gcloud compute ssh root@${GCP_PROJECT_INSTANCE} --ssh-key-file=${SSH_KEY}"
             ${SSH_RUN} --command="cd ${GCP_FOLDER_PATH} && git pull origin master"
             
