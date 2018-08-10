@@ -8,7 +8,7 @@ jobs:
           name: rajeshci
           environment:
             GOOGLE_INSTANCE_NAME: onnbazaar
-            GOOGLE_SERVICE_NAME: 573964864377-compute@developer.gserviceaccount.com
+            GOOGLE_SERVICE_NAME: rajeshci@onnbazaar-200807.iam.gserviceaccount.com
             #GOOGLE_SERVICE_NAME: #rajeshci@onnbazaar-200807.iam.gserviceaccount.com
           command: echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json && echo ${GOOGLE_COMPUTE_ZONE} 
       - run: |
