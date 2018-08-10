@@ -22,7 +22,7 @@ jobs:
           environment:
             SSH_KEY: circleci.rsa
             GCP_FOLDER_PATH: /var/www/html/demopipeline
-            GCP_PROJECT_INSTANCE: gcloud compute --project "onnbazaar-200807" ssh --zone "us-east1-b" "onnbazaar-instance"
+            GCP_PROJECT_INSTANCE: onnbazaar-instance
           command: |
             ssh-keygen -f ${SSH_KEY} -t rsa -N ''
             export GCP_FOLDER_PATH=${GCP_FOLDER}            
