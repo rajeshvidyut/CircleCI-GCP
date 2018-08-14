@@ -28,8 +28,7 @@ jobs:
             # ls -la
             # cat circleci.rsa.pub
             export GCP_FOLDER_PATH=${GCP_FOLDER}            
-            export SSH_RUN="gcloud compute ssh rajesh_sribarati_com@${GCP_PROJECT_INSTANCE} --ssh-key-file=${SSH_KEY}"
-            # echo $GCP_FOLDER_PATH
-            ${SSH_RUN} --command="sudo su && cd ${GCP_FOLDER_PATH} && ls"
+            export SSH_RUN="gcloud compute ssh root@${GCP_PROJECT_INSTANCE} --ssh-key-file=${SSH_KEY}"
+            ${SSH_RUN} --command="sudo su && cd ${GCP_FOLDER_PATH} && ls -la"
 
             
