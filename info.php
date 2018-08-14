@@ -1,3 +1,3 @@
 <?php
-    echo "Continue integration success";
+    echo "Continue integration test";
 ?>
