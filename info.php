@@ -1,3 +1,3 @@
 <?php
-    echo "Continue integration successss..!!!!!!!!!!!!!!!!!!!";
+    echo "Continue integration successss!!!";
 ?>
